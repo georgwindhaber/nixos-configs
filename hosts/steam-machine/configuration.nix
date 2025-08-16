@@ -119,6 +119,7 @@
     discord
     davinci-resolve
     wgnord # NordVPN
+    vlc
 
     ### Coding
     pnpm
