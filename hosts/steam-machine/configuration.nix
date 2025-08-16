@@ -27,6 +27,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   boot.supportedFilesystems = [ "ntfs" ];
 
   # fileSystems."/mnt/storage" =
