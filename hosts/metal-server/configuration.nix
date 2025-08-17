@@ -153,11 +153,11 @@
     wireguard-tools
   ];
 
-  fileSystems."/mnt/raid5" = {
-    device = "/dev/md0";
-    fsType = "ext4";
-    options = [ "defaults" ];
-  };
+  # fileSystems."/mnt/raid5" = {
+  #   device = "/dev/md0";
+  #   fsType = "ext4";
+  #   options = [ "defaults" ];
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -192,4 +192,38 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
+  systemd.network.enable = true;
+  systemd.network = {
+    networks."40-wg-stammtisch" = {
+      matchConfig.Name = "wg-stammtisch";
+      address = [
+        "192.168.100.1/31"
+        "fd00:f00d::1/127"
+      ];
+    };
+    netdevs."40-wg-stammtisch" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg-stammtisch";
+        MTUBytes = "1420";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = "/etc/wireguard/priv.key";
+      };
+      wireguardPeers = [
+        {
+          PublicKey = "morTd9Yblt6BO1nn9cefvGYbFW6f3kbZhBNV78WhpEA=";
+          PresharedKeyFile = "/etc/wireguard/preshared.key";
+          Endpoint = "frog.stammtisch.wien:51830";
+          AllowedIPs = [
+            "192.168.100.0/31"
+            "fd00:f00d::/127"
+          ];
+          PersistentKeepalive = 25;
+        }
+      ];
+    };
+  };
 }
+
+
