@@ -14,8 +14,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  boot.swraid = {
+    enable = true;
+    mdadmConf = ''
+      ARRAY /dev/md0 metadata=1.2 spares=1 UUID=3fe3f0a5:a97cac5b:f3ddce55:0f56c628
+      MAILADDR georg.windhaber@gmail.com
+    '';
+  };
+
+  networking.hostName = "metal-server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -107,7 +117,15 @@
     git
     vscode
     nodejs_24
+    mdadm
+    # wireguard-tools
   ];
+
+  fileSystems."/mnt/raid5" = {
+    device = "/dev/md0";
+    fsType = "ext4";
+    options = [ "defaults" ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -121,6 +139,18 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = [ "georg" ];
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "no";
+    };
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
