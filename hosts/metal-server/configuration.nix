@@ -23,35 +23,19 @@
   };
 
   networking.hostName = "metal-server"; # Define your hostname.
-  # networking.firewall = {
-  #   allowedUDPPorts = [ 51820 ];
-  # };
+  networking.firewall = {
+    allowedTCPPorts = [ 80 ];
+  };
 
-  # networking.wireguard.enable = true;
-  # networking.wireguard.interfaces = {
-  #   wg0 = {
-  #     ips = [ "10.100.0.2/24" ];
-  #     listenPort = 51820;
-  #     privateKeyFile = "~/wireguard-keys/private";
-  #     peers = [
-  #       {
-  #         publicKey = "{}";
-  #         allowedIPs = [ "0.0.0.0/0" ]
-  #         endpoint = "{}:51820";
-  #         persistentKeepalive = 25;
-  #       }
-  #     ]
-  #   }
-  # };
-
-  # services.nginx = {
-  #   enable = true;
-  #   virtualHosts."*" = {
-  #     # enableACME = true;
-  #     # forceSSL = true;
-  #     root = "/var/www/test";
-  #   };
-  # };
+  services.nginx = {
+    enable = true;
+    virtualHosts."localhost" = {
+      # enableACME = true;
+      # forceSSL = true;
+      root = "/var/www/test";
+      default = true;
+    };
+  };
   # security.acme.certs = {
   #   "blog.example.com".email = "youremail@address.com";
   # };
