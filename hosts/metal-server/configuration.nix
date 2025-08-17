@@ -23,7 +23,39 @@
   };
 
   networking.hostName = "metal-server"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.firewall = {
+  #   allowedUDPPorts = [ 51820 ];
+  # };
+
+  # networking.wireguard.enable = true;
+  # networking.wireguard.interfaces = {
+  #   wg0 = {
+  #     ips = [ "10.100.0.2/24" ];
+  #     listenPort = 51820;
+  #     privateKeyFile = "~/wireguard-keys/private";
+  #     peers = [
+  #       {
+  #         publicKey = "{}";
+  #         allowedIPs = [ "0.0.0.0/0" ]
+  #         endpoint = "{}:51820";
+  #         persistentKeepalive = 25;
+  #       }
+  #     ]
+  #   }
+  # };
+
+  # services.nginx = {
+  #   enable = true;
+  #   virtualHosts."*" = {
+  #     # enableACME = true;
+  #     # forceSSL = true;
+  #     root = "/var/www/test";
+  #   };
+  # };
+  # security.acme.certs = {
+  #   "blog.example.com".email = "youremail@address.com";
+  # };
+
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -118,7 +150,7 @@
     vscode
     nodejs_24
     mdadm
-    # wireguard-tools
+    wireguard-tools
   ];
 
   fileSystems."/mnt/raid5" = {
@@ -151,12 +183,6 @@
       PermitRootLogin = "no";
     };
   };
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
