@@ -2,8 +2,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
+      ./custom-hardware-configuration.nix
+      # ./nginx.nix
     ];
 
   # Bootloader.
@@ -20,19 +22,8 @@
 
   networking.hostName = "metal-server"; # Define your hostname.
   networking.firewall = {
-    allowedTCPPorts = [ 80 ];
+    allowedTCPPorts = [ 80 443 ];
   };
-
-  services.nginx = {
-    enable = true;
-    virtualHosts."localhost" = {
-      # enableACME = true;
-      # forceSSL = true;
-      root = "/var/www/test";
-      default = true;
-    };
-  };
-
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -96,7 +87,7 @@
   users.users.georg = {
     isNormalUser = true;
     description = "georg";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -105,11 +96,14 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Install Docker
+  virtualisation.docker.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  ### PACKAGES ###
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     pnpm
     git
@@ -119,24 +113,13 @@
     wireguard-tools
   ];
 
+
+
   # fileSystems."/mnt/raid5" = {
   #   device = "/dev/md0";
   #   fsType = "ext4";
   #   options = [ "defaults" ];
   # };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   services.openssh = {
     enable = true;
