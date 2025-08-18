@@ -5,7 +5,7 @@
     [ 
       ./hardware-configuration.nix
       ./custom-hardware-configuration.nix
-      # ./nginx.nix
+      ./nginx.nix
     ];
 
   # Bootloader.
