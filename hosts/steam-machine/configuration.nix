@@ -128,6 +128,9 @@
     git
     vscode
     nodejs_24
+
+    # NixOS
+    nixfmt-rfc-style
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

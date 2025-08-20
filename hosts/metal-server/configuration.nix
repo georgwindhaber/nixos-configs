@@ -4,7 +4,6 @@
   imports =
     [ 
       ./hardware-configuration.nix
-      ./custom-hardware-configuration.nix
       ./nginx.nix
     ];
 
@@ -111,15 +110,14 @@
     nodejs_24
     mdadm
     wireguard-tools
+    nixfmt-rfc-style
   ];
 
-
-
-  # fileSystems."/mnt/raid5" = {
-  #   device = "/dev/md0";
-  #   fsType = "ext4";
-  #   options = [ "defaults" ];
-  # };
+  fileSystems."/mnt/raid5" = {
+    device = "/dev/md0";
+    fsType = "ext4";
+    options = [ "defaults" ];
+  };
 
   services.openssh = {
     enable = true;
