@@ -1,16 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ./nginx.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./nginx.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.swraid = {
     enable = true;
     mdadmConf = ''
@@ -18,16 +16,25 @@
       MAILADDR georg.windhaber@gmail.com
     '';
   };
-
-  networking.hostName = "metal-server"; # Define your hostname.
-  networking.firewall = {
-    allowedTCPPorts = [ 80 443 ];
+  fileSystems."/mnt/raid5" = {
+    device = "/dev/md0";
+    fsType = "ext4";
+    options = [ "defaults" ];
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  networking.networkmanager.enable = true; # Enable networking
+  networking.hostName = "metal-server"; # Define your hostname.
+  networking.firewall = {
+    allowedTCPPorts = [
+      80
+      443
+    ];
+  };
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -86,7 +93,11 @@
   users.users.georg = {
     isNormalUser = true;
     description = "georg";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [
       kdePackages.kate
     ];
@@ -112,12 +123,6 @@
     wireguard-tools
     nixfmt-rfc-style
   ];
-
-  fileSystems."/mnt/raid5" = {
-    device = "/dev/md0";
-    fsType = "ext4";
-    options = [ "defaults" ];
-  };
 
   services.openssh = {
     enable = true;
@@ -173,5 +178,3 @@
     };
   };
 }
-
-
