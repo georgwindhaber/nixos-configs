@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./nginx.nix
+    ./mailserver.nix
   ];
 
   # Bootloader.
