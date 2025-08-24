@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./nginx.nix
-    ./mailserver.nix
+    # ./mailserver.nix
     ./raid5.nix
   ];
 
