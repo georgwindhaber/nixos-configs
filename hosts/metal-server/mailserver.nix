@@ -10,13 +10,13 @@
     (builtins.fetchTarball {
       # Mailserver from gitlab
       url = "https://gitlab.com/simple-nixos-mailserver/nixos-mailserver/-/archive/nixos-25.05/nixos-mailserver-nixos-25.05.tar.gz";
-      sha256 = "1 qn5fg0h62r82q7xw54ib9wcpflakix2db2mahbicx540562la1y";
+      sha256 = "1qn5fg0h62r82q7xw54ib9wcpflakix2db2mahbicx540562la1y";
     })
   ];
 
   mailserver = {
     enable = true;
-    stateVersion = 3;
+    stateVersion = 5;
     fqdn = "mail.schoubl.com";
     domains = [ "schoubl.com" ];
 
