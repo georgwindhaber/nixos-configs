@@ -8,6 +8,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./davinci-resolve.nix
   ];
 
   # Bootloader.
@@ -16,6 +17,8 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   networking.hostName = "steam-machine"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -78,6 +81,17 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Experimental = true; # Show battery charge of Bluetooth devices
+      };
+    };
+  };
+  # services.blueman.enable = true;
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -124,7 +138,6 @@
     bitwarden-desktop
     signal-desktop
     discord
-    davinci-resolve
     wgnord # NordVPN
     vlc
 

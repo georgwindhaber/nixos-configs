@@ -18,7 +18,7 @@
   services.samba = {
     enable = true;
     openFirewall = true;
-    shares = {
+    settings = {
       raidshare = {
         path = "/mnt/raid5";
         browseable = "yes";
