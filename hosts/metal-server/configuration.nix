@@ -87,6 +87,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "samba"
     ];
     packages = with pkgs; [
       kdePackages.kate
