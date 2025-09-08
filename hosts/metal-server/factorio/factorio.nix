@@ -3,6 +3,9 @@
   ...
 }:
 {
+
+  imports = [ ./server-settings.json ];
+
   services.factorio = {
     enable = true;
     openFirewall = true;
