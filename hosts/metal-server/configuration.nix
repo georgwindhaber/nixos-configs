@@ -6,6 +6,7 @@
     ./nginx.nix
     # ./mailserver.nix
     ./raid5.nix
+    ./factorio.nix
   ];
 
   # Bootloader.
@@ -113,6 +114,7 @@
     mdadm
     wireguard-tools
     nixfmt-rfc-style
+    factorio-headless
   ];
 
   services.openssh = {
