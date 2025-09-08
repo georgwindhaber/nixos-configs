@@ -1,12 +1,13 @@
 {
-  config,
-  lib,
   pkgs,
-  modulesPath,
   ...
 }:
-
 {
+
+  factorio.override = {
+    versionsJson = ./factorio-versions.json;
+  };
+
   services.factorio = {
     enable = true;
     openFirewall = true;
