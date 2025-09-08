@@ -21,6 +21,6 @@
     lan = true;
     saveName = "testserver";
     description = "Local testserver";
-    extraSettingsFile = "/home/georg/factorio/server-settings.json";
+    extraSettingsFile = ./server-settings.json;
   };
 }
