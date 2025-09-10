@@ -7,6 +7,7 @@
     # ./mailserver.nix
     ./raid5.nix
     ./factorio/factorio.nix
+    ./sops.nix
   ];
 
   # Bootloader.
@@ -136,6 +137,13 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
+
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=no
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 
   # Tunnel to the stammtisch.wien domain / christophs' server
   systemd.network.enable = true;
