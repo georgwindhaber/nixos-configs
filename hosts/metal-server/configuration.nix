@@ -6,7 +6,7 @@
     ./nginx.nix
     # ./mailserver.nix
     ./raid5.nix
-    # ./factorio/factorio.nix
+    ./factorio/factorio.nix
     # ./sops.nix
   ];
 
