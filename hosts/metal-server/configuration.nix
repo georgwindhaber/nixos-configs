@@ -6,8 +6,8 @@
     ./nginx.nix
     # ./mailserver.nix
     ./raid5.nix
-    ./factorio/factorio.nix
-    ./sops.nix
+    # ./factorio/factorio.nix
+    # ./sops.nix
   ];
 
   # Bootloader.
