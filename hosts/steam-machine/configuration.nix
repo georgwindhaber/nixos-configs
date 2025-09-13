@@ -140,9 +140,12 @@
     discord
     wgnord # NordVPN
     vlc
+    obs-studio
+    spotify
 
     ### Coding
     pnpm
+    bun
     git
     vscode
     nodejs_24
