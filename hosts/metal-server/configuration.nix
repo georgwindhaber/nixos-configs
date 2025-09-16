@@ -21,6 +21,9 @@
       80
       443
     ];
+    allowedUDPPorts = [
+      34197
+    ];
   };
 
   nix.settings.experimental-features = [
