@@ -7,6 +7,7 @@
     # ./mailserver.nix
     ./raid5.nix
     ./factorio/factorio.nix
+    ./jellyfin.nix
     # ./sops.nix
   ];
 
