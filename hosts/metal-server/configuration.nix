@@ -120,6 +120,7 @@
     wireguard-tools
     nixfmt-rfc-style
     factorio-headless
+    vlc
   ];
 
   services.openssh = {
