@@ -121,6 +121,8 @@
     nixfmt-rfc-style
     factorio-headless
     vlc
+    transmission_4-gtk
+    mullvad-vpn
   ];
 
   services.openssh = {
