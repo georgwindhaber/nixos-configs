@@ -149,6 +149,7 @@
     git
     vscode
     nodejs_24
+    nodePackages."@nestjs/cli"
 
     # NixOS
     nixfmt-rfc-style
