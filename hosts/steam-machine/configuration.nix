@@ -142,6 +142,7 @@
     vlc
     obs-studio
     spotify
+    prismlauncher
 
     ### Coding
     pnpm
