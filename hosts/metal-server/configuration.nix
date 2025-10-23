@@ -137,6 +137,18 @@
     };
   };
 
+  services.postgresql = {
+    enable = true;
+    ensureDatabases = [ "shisharia" ];
+    ensureUsers = [
+      {
+        name = "admin";
+        # password = "initial--repl4ced-by-n0w"
+      }
+    ];
+    enableTCPIP = true;
+  }
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
