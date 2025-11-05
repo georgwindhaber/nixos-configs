@@ -21,7 +21,7 @@
     allowedTCPPorts = [
       80
       443
-      5432
+      3000
     ];
     allowedUDPPorts = [
       34197
@@ -142,12 +142,12 @@
     enable = true;
     ensureDatabases = [ "shisharia" ];
     authentication = pkgs.lib.mkOverride 10 ''
-        #type database  DBuser                  auth-method
-        local all       all                     trust
+      #type database  DBuser                  auth-method
+      local all       all                     trust
 
-        # Over IP
-        host  all       all     all             trust
-        host  all       all     ::1/128         trust
+      # Over IP
+      host  all       all     all             trust
+      host  all       all     ::1/128         trust
     '';
     enableTCPIP = true;
   };
