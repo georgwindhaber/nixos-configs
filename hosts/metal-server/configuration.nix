@@ -21,6 +21,7 @@
     allowedTCPPorts = [
       80
       443
+      3000
     ];
     allowedUDPPorts = [
       34197
