@@ -21,6 +21,7 @@
     allowedTCPPorts = [
       80
       443
+      5432
     ];
     allowedUDPPorts = [
       34197
@@ -140,14 +141,16 @@
   services.postgresql = {
     enable = true;
     ensureDatabases = [ "shisharia" ];
-    ensureUsers = [
-      {
-        name = "admin";
-        # password = "initial--repl4ced-by-n0w"
-      }
-    ];
+    authentication = pkgs.lib.mkOverride 10 ''
+        #type database  DBuser                  auth-method
+        local all       all                     trust
+
+        # Over IP
+        host  all       all     all             trust
+        host  all       all     ::1/128         trust
+    '';
     enableTCPIP = true;
-  }
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
