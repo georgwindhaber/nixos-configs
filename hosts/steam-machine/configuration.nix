@@ -138,23 +138,26 @@
     bitwarden-desktop
     signal-desktop
     discord
-    wgnord # NordVPN
     vlc
     obs-studio
     spotify
     prismlauncher
+    transmission_4-gtk
 
     ### Coding
     pnpm
     bun
     git
     vscode
+    bruno # postman alternative
+    dbeaver-bin # database gui
     nodejs_24
     nodePackages."@nestjs/cli"
 
     # NixOS
     nixfmt-rfc-style
   ];
+  services.mullvad-vpn.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
