@@ -9,7 +9,6 @@
 
   environment.systemPackages = with pkgs; [
     davinci-resolve
-    amdvlk
     clinfo
     mesa-demos
     kitty
