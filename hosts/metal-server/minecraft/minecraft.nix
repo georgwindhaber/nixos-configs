@@ -7,5 +7,5 @@
     enable = true;
     eula = true;
     openFirewall = true;
-  }
+  };
 }
