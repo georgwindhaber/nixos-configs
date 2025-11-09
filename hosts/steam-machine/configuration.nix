@@ -118,6 +118,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -149,6 +150,7 @@
     bun
     git
     vscode
+    docker
     bruno # postman alternative
     dbeaver-bin # database gui
     nodejs_24
@@ -158,6 +160,9 @@
     nixfmt-rfc-style
   ];
   services.mullvad-vpn.enable = true;
+  virtualisation.docker = {
+    enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
