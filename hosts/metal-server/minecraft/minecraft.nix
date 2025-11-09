@@ -3,7 +3,7 @@
   ...
 }:
 {
-  services.minecaft-server = {
+  services.minecraft-server = {
     enable = true;
     eula = true;
     openFirewall = true;
