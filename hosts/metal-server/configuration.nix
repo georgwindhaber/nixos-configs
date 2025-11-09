@@ -3,12 +3,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./nginx.nix
-    # ./mailserver.nix
-    ./raid5.nix
-    ./factorio/factorio.nix
-    ./jellyfin.nix
     # ./sops.nix
+    # ./mailserver.nix
+    ./nginx.nix
+    ./raid5.nix
+    ./jellyfin.nix
+    ./factorio/factorio.nix
+    ./minecraft/minecraft.nix
   ];
 
   # Bootloader.
