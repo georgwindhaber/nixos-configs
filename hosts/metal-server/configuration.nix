@@ -54,6 +54,10 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = false;
+
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -124,6 +128,7 @@
     vlc
     transmission_4-gtk
     mullvad-vpn
+    pm2
   ];
 
   services.openssh = {
