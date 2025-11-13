@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./hardware-temperature-logs.nix
     # ./sops.nix
     # ./mailserver.nix
     ./nginx.nix
@@ -130,11 +131,6 @@
     transmission_4-gtk
     mullvad-vpn
     pm2
-
-    # Sensors for temp loggin
-    lm_sensors
-    hddtemp
-    nvme-cli
   ];
 
   services.openssh = {
