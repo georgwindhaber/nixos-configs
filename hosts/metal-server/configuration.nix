@@ -132,7 +132,7 @@
     pm2
 
     # Sensors for temp loggin
-    lm-sensors
+    lm_sensors
     hddtemp
     nvme-cli
   ];
