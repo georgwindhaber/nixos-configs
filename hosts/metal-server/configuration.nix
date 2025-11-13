@@ -130,6 +130,11 @@
     transmission_4-gtk
     mullvad-vpn
     pm2
+
+    # Sensors for temp loggin
+    lm-sensors
+    hddtemp
+    nvme-cli
   ];
 
   services.openssh = {
