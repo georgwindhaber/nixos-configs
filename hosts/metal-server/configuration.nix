@@ -131,8 +131,12 @@
     transmission_4-gtk
     mullvad-vpn
     pm2
+
+    lm_sensors
+    smartmontools
   ];
 
+  services.mullvad-vpn.enable = true;
   services.openssh = {
     enable = true;
     ports = [ 22 ];
