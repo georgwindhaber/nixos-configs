@@ -136,6 +136,13 @@
     smartmontools
   ];
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   services.mullvad-vpn.enable = true;
   services.openssh = {
     enable = true;
