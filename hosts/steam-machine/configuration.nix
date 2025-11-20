@@ -150,6 +150,7 @@
     bun
     git
     vscode
+    code-cursor
     docker
     bruno # postman alternative
     dbeaver-bin # database gui
