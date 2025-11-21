@@ -75,6 +75,13 @@
     variant = "us";
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      3000
+      5173
+    ];
+  };
+
   # Configure console keymap
   console.keyMap = "de";
 
