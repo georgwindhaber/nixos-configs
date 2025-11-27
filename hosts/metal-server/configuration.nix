@@ -24,9 +24,11 @@
       80
       443
       3000
+      54321
     ];
     allowedUDPPorts = [
       34197
+      51830
     ];
   };
 
@@ -115,6 +117,8 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  hardware.bluetooth.enable = true;
 
   ### PACKAGES ###
   # List packages installed in system profile. To search, run:
