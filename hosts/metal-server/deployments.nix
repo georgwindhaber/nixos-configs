@@ -1,12 +1,10 @@
 { config, pkgs, ... }:
 
 {
-  users.users.deploy = {
-    description = "User used for automatic deploys"
+  networking.firewall = {
+    allowedTCPPorts = [
+      3000
+      3001
+    ];
   };
-
-
-
-
-
 }
