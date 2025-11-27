@@ -75,6 +75,13 @@
     variant = "us";
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [
+      3000
+      5173
+    ];
+  };
+
   # Configure console keymap
   console.keyMap = "de";
 
@@ -150,6 +157,7 @@
     bun
     git
     vscode
+    code-cursor
     docker
     bruno # postman alternative
     dbeaver-bin # database gui

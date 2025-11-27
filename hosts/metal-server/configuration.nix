@@ -9,6 +9,7 @@
     ./nginx.nix
     ./raid5.nix
     ./jellyfin.nix
+    ./deployments.nix
     ./factorio/factorio.nix
     ./minecraft/minecraft.nix
   ];
@@ -23,7 +24,6 @@
     allowedTCPPorts = [
       80
       443
-      3000
       54321
     ];
     allowedUDPPorts = [
@@ -94,19 +94,30 @@
     #media-session.enable = true;
   };
 
+  mySshKeys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKE+wrNc8q+A/do5Og6xpK+Q8UR3DpWcXg0Iq7hlSI1j" # Steam machine
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAW5acAzbohO9YMXDm7SpvUO86f9hMrY9UBXs09mQ+V9" # Metal server
+  ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.georg = {
-    isNormalUser = true;
-    description = "georg";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "docker"
-      "samba"
-    ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
+  users.users = {
+    georg = {
+      isNormalUser = true;
+      description = "georg";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+        "samba"
+      ];
+      openssh.authorizedKeys.keys = mySshKeys;
+    };
+    deploy = {
+      isNormalUser = true;
+      description = "Used for deployments";
+      extraGroups = [ "wheel" ];
+      openssh.authorizedKeys.keys = mySshKeys;
+    };
   };
 
   # Install firefox.
@@ -152,8 +163,12 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
-      AllowUsers = [ "georg" ];
+      AuthenticationMethods = "publickey";
+      PasswordAuthentication = false;
+      AllowUsers = [
+        "georg"
+        "deploy"
+      ];
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
