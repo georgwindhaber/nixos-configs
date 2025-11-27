@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  mySshKeys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKE+wrNc8q+A/do5Og6xpK+Q8UR3DpWcXg0Iq7hlSI1j" # Steam machine
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAW5acAzbohO9YMXDm7SpvUO86f9hMrY9UBXs09mQ+V9" # Metal server
+  ];
+in
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -93,11 +100,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
-  mySshKeys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKE+wrNc8q+A/do5Og6xpK+Q8UR3DpWcXg0Iq7hlSI1j" # Steam machine
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAW5acAzbohO9YMXDm7SpvUO86f9hMrY9UBXs09mQ+V9" # Metal server
-  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
