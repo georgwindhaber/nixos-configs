@@ -9,6 +9,7 @@
     ./nginx.nix
     ./raid5.nix
     ./jellyfin.nix
+    ./deployments.nix
     ./factorio/factorio.nix
     ./minecraft/minecraft.nix
   ];
@@ -101,9 +102,6 @@
       "wheel"
       "docker"
       "samba"
-    ];
-    packages = with pkgs; [
-      kdePackages.kate
     ];
   };
 
