@@ -9,24 +9,17 @@
     ];
   };
 
-  systemd.services.webhook-runner = {
+  systemd.services.pm2 = {
     enable = true;
-    wantedBy = [ "multi-user.target" ];
-    serviceconfig = {
-      ExecStart = "${pkgs.nodejs}/bin/node /home/georg/source/webhook-runner/dist/index.js";
-      Restart = "always";
-      WorkingDirectory = "/home/georg/source/webhook-runner";
-      Environment = "NODE_ENV=production";
+    description = "pm2";
+    unitConfig = {
+      Type = "simple";
     };
-  };
-  systemd.services.repinn-backend = {
-    enable = true;
     wantedBy = [ "multi-user.target" ];
-    serviceconfig = {
-      ExecStart = "${pkgs.nodejs}/bin/node /home/georg/source/repinn/dist/src/index.js";
-      Restart = "always";
-      WorkingDirectory = "/home/georg/source/repinn/backend";
-      Environment = "NODE_ENV=production";
+    serviceConfig = {
+      ExecStart = "${pkgs.nodePackages_latest.pm2}/bin/pm2 resurrect";
+      ExecReload = "${pkgs.nodePackages_latest.pm2}/bin/pm2 reload all";
+      ExecStop = "${pkgs.nodePackages_latest.pm2}/bin/pm2 kill";
     };
   };
 }
