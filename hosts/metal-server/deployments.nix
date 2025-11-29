@@ -17,9 +17,9 @@
     };
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.nodePackages_latest.pm2}/bin/pm2 resurrect";
-      ExecReload = "${pkgs.nodePackages_latest.pm2}/bin/pm2 reload all";
-      ExecStop = "${pkgs.nodePackages_latest.pm2}/bin/pm2 kill";
+      ExecStart = "${pkgs.pm2}/bin/pm2 resurrect";
+      ExecReload = "${pkgs.pm2}/bin/pm2 reload all";
+      ExecStop = "${pkgs.pm2}/bin/pm2 kill";
     };
   };
 }
