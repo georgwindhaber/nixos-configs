@@ -34,7 +34,7 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/projects/repinn/backend/dist/src/index.js";
-      WorkingDirectory = "/path/to/your";
+      WorkingDirectory = "/home/georg/projects/repinn/backend";
       User = "georg";
       Group = "users";
       # Uncomment if you need environment variables
