@@ -129,6 +129,9 @@ in
   # Install Docker
   virtualisation.docker.enable = true;
 
+  # Enablbe unpachted dynamic binaries for vs-code server
+  programs.nix-ld.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
