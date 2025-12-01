@@ -151,7 +151,7 @@ in
     lm_sensors
     smartmontools
 
-    (vscode-with-extentions.override {
+    (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
         ms-vscode-remote.remote-ssh
       ];
