@@ -139,7 +139,6 @@ in
   environment.systemPackages = with pkgs; [
     pnpm
     git
-    vscode
     nodejs_24
     mdadm
     wireguard-tools
@@ -149,9 +148,14 @@ in
     transmission_4-gtk
     mullvad-vpn
     pm2
-
     lm_sensors
     smartmontools
+
+    (vscode-with-extentions.override {
+      vscodeExtensions = with vscode-extensions; [
+        ms-vscode-remote.remote-ssh
+      ];
+    })
   ];
 
   programs.steam = {
