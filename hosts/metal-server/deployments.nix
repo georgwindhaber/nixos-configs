@@ -9,7 +9,7 @@
     ];
   };
 
-  systemd.user.services.webhook-runner = {
+  systemd.services.webhook-runner = {
     enable = true;
     description = "Webhook runner";
     unitConfig = {
@@ -21,10 +21,12 @@
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/webhook-runner/dist/index.js";
       WorkingDirectory = "/home/georg/source/webhook-runner";
+      StandardOutput = "journal";
+      StandardError = "journal";
     };
   };
 
-  systemd.user.services.repinn-backend = {
+  systemd.services.repinn-backend = {
     enable = true;
     description = "Repinn backend";
     unitConfig = {
@@ -35,12 +37,13 @@
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/repinn/backend/dist/src/index.js";
+      StandardOutput = "journal";
+      StandardError = "journal";
       WorkingDirectory = "/home/georg/source/repinn/backend";
       Environment = [
         "PORT=3001"
       ];
     };
   };
-
 
 }
