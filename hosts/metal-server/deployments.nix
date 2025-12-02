@@ -9,6 +9,19 @@
     ];
   };
 
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
+  polkit.addRule(function(action, subject) {
+    if (
+      action.id == "org.freedesktop.systemd1.manage-units" &&
+      action.lookup("unit") == "repinn-backend.service" &&
+      subject.user == "georg"
+    ) {
+      return polkit.Result.YES;
+    }
+  });
+  '';
+
   systemd.services.webhook-runner = {
     enable = true;
     description = "Webhook runner";
