@@ -12,14 +12,12 @@
   systemd.services.webhook-runner = {
     enable = true;
     description = "Webhook runner";
-    unitConfig = {
-      Type = "simple";
-      Restart = "always";
-      RestartSec = "10";
-    };
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/webhook-runner/dist/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
       WorkingDirectory = "/home/georg/source/webhook-runner";
       StandardOutput = "journal";
       StandardError = "journal";
@@ -32,13 +30,13 @@
     enable = true;
     description = "Repinn backend";
     unitConfig = {
-      Type = "simple";
-      Restart = "always";
-      RestartSec = "10";
     };
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/repinn/backend/dist/src/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
       StandardOutput = "journal";
       StandardError = "journal";
       User = "georg";
