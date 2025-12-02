@@ -23,6 +23,8 @@
       WorkingDirectory = "/home/georg/source/webhook-runner";
       StandardOutput = "journal";
       StandardError = "journal";
+      User = "georg";
+      Group = "users";
     };
   };
 
@@ -39,6 +41,8 @@
       ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/repinn/backend/dist/src/index.js";
       StandardOutput = "journal";
       StandardError = "journal";
+      User = "georg";
+      Group = "users";
       WorkingDirectory = "/home/georg/source/repinn/backend";
       Environment = [
         "PORT=3001"
