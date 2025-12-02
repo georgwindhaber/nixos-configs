@@ -117,11 +117,23 @@ in
     };
     deploy = {
       isNormalUser = true;
-      description = "Used for deployments";
+      description = "Deploy";
       extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = mySshKeys;
     };
   };
+
+  security.sudo.extraRules = [
+    {
+      users = [ "deploy" ];
+      commands = [
+        {
+          command = "${pkgs.systemd}/bin/systemctl restart webhook-runner";
+          options = [ "NOPASSWD" ];
+        }
+      ]
+    }
+  ]
 
   # Install firefox.
   programs.firefox.enable = true;
