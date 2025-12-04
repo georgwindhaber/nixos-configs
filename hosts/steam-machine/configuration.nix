@@ -145,6 +145,7 @@
 
     bitwarden-desktop
     signal-desktop
+    telegram-desktop
     discord
     vlc
     obs-studio
