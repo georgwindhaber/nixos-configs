@@ -15,7 +15,7 @@
     polkit.addRule(function(action, subject) {
       if (
         action.id == "org.freedesktop.systemd1.manage-units" &&
-        (action.lookup("unit") == "repinn-backend.service" || action.lookup ("unit") == "repinn-backend-dev.service")
+        (action.lookup("unit") == "repinn-backend.service" || action.lookup ("unit") == "repinn-backend-dev.service") &&
         subject.user == "georg"
       ) {
         return polkit.Result.YES;
