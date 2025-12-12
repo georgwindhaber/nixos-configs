@@ -161,6 +161,7 @@
     vscode
     code-cursor
     docker
+    chromium
     bruno # postman alternative
     dbeaver-bin # database gui
     nodejs_24
