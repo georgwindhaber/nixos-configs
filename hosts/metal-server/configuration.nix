@@ -20,6 +20,7 @@ in
     ./deployments.nix
     ./factorio/factorio.nix
     ./minecraft/minecraft.nix
+    ./wiki.nix
   ];
 
   # Bootloader.
@@ -181,7 +182,7 @@ in
 
   services.postgresql = {
     enable = true;
-    ensureDatabases = [ "shisharia" ];
+    ensureDatabases = [ "wiki-js" ];
     authentication = pkgs.lib.mkOverride 10 ''
       #type database  DBuser                  auth-method
       local all       all                     trust
@@ -191,6 +192,10 @@ in
       host  all       all     ::1/128         trust
     '';
     enableTCPIP = true;
+      ensureUsers = [{
+      name = "wiki-js";
+      ensureDBOwnership = true;
+    }];
   };
 
   # This value determines the NixOS release from which the default
