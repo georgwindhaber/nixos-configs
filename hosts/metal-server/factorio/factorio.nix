@@ -10,7 +10,7 @@
     loadLatestSave = true;
     lan = true;
     saveName = "testserver";
-    description = "The Stammtisch Must Grow";
+    description = "The Männerhöhle Must Grow";
     extraSettings = {
       max_players = 16;
     };
