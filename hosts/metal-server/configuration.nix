@@ -192,10 +192,12 @@ in
       host  all       all     ::1/128         trust
     '';
     enableTCPIP = true;
-      ensureUsers = [{
-      name = "wiki-js";
-      ensureDBOwnership = true;
-    }];
+    ensureUsers = [
+      {
+        name = "wiki-js";
+        ensureDBOwnership = true;
+      }
+    ];
   };
 
   # This value determines the NixOS release from which the default
@@ -241,7 +243,7 @@ in
             "192.168.100.0/31"
             "fd00:f00d::/127"
           ];
-          PersistentKeepalive = 10;
+          PersistentKeepalive = 15;
         }
       ];
     };
