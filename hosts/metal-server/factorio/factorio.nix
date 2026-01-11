@@ -9,7 +9,7 @@
     openFirewall = true;
     loadLatestSave = true;
     lan = true;
-    saveName = "testserver";
+    saveName = "maennerhoehle";
     description = "The Männerhöhle Must Grow";
     extraSettings = {
       max_players = 16;
