@@ -19,6 +19,15 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      libva
+    ];
+  };
 
   networking.hostName = "steam-machine"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -153,6 +162,7 @@
     spotify
     prismlauncher
     transmission_4-gtk
+    ffmpeg
 
     ### Coding
     pnpm
@@ -168,7 +178,7 @@
     nodePackages."@nestjs/cli"
 
     # NixOS
-    nixfmt-rfc-style
+    nixfmt
   ];
   services.mullvad-vpn.enable = true;
   virtualisation.docker = {

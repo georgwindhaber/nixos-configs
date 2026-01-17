@@ -149,7 +149,7 @@ in
     nodejs_24
     mdadm
     wireguard-tools
-    nixfmt-rfc-style
+    nixfmt
     factorio-headless
     vlc
     transmission_4-gtk
