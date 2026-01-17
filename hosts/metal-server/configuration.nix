@@ -67,9 +67,18 @@ in
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
+
+  nixpkgs.config.nvidia.acceptLicense = true;
+
   hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = false;
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+    open = false;
+    modesetting.enable = true;
+    nvidiaSettings = true;
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
