@@ -35,6 +35,7 @@ in
     allowedTCPPorts = [
       80
       443
+      2283
       54321
     ];
     allowedUDPPorts = [
@@ -159,6 +160,7 @@ in
     pm2
     lm_sensors
     smartmontools
+    btop
 
     (vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions; [
