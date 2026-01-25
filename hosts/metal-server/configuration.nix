@@ -21,6 +21,8 @@ in
     ./factorio/factorio.nix
     ./minecraft/minecraft.nix
     ./wiki.nix
+    ./immich.nix
+    # ./dashboard.nix
   ];
 
   # Bootloader.
