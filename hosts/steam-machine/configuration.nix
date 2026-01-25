@@ -106,6 +106,7 @@
       };
     };
   };
+  hardware.xone.enable = true;
   # services.blueman.enable = true;
 
   # Enable sound with pipewire.
