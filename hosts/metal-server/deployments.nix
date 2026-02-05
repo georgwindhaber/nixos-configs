@@ -6,6 +6,7 @@
       3000
       3001
       3002
+      3005
       9000
     ];
   };
@@ -80,6 +81,28 @@
       WorkingDirectory = "/home/georg/source/repinn-dev/backend";
       Environment = [
         "PORT=3002"
+      ];
+    };
+  };
+
+  systemd.services.flo-gadse-backend = {
+    enable = true;
+    description = "Flo birthday gadse backend";
+    unitConfig = {
+    };
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/flo-birthday-gadse/backend/dist/src/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
+      StandardOutput = "journal";
+      StandardError = "journal";
+      User = "georg";
+      Group = "users";
+      WorkingDirectory = "/home/georg/source/flo-birthday-gadse/backend";
+      Environment = [
+        "PORT=3005"
       ];
     };
   };
