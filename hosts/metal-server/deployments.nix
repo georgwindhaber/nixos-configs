@@ -92,7 +92,7 @@
     };
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/flo-birthday-gadse/backend/dist/src/index.js";
+      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/flo-birthday-gadse/backend/dist/index.js";
       Type = "simple";
       Restart = "always";
       RestartSec = "10";
