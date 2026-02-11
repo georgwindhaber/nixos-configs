@@ -107,7 +107,7 @@
     };
   };
 
-  systemd.services.sound-control-backen = {
+  systemd.services.sound-control-backend = {
     enable = true;
     description = "Sound Control by hypa.digital backend";
     unitConfig = {
