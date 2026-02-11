@@ -107,4 +107,26 @@
     };
   };
 
+  systemd.services.sound-control-backen = {
+    enable = true;
+    description = "Sound Control by hypa.digital backend";
+    unitConfig = {
+    };
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/sound-control/backend/dist/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
+      StandardOutput = "journal";
+      StandardError = "journal";
+      User = "georg";
+      Group = "users";
+      WorkingDirectory = "/home/georg/source/sound-control/backend";
+      Environment = [
+        "PORT=6000"
+      ];
+    };
+  };
+
 }
