@@ -3,11 +3,14 @@
 {
   networking.firewall = {
     allowedTCPPorts = [
+      # schoubl.com
       3000
       3001
       3002
       3005
       9000
+      # hypa.digital
+      6000
     ];
   };
 
