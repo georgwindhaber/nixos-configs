@@ -10,7 +10,7 @@
       3005
       9000
       # hypa.digital
-      6000
+      4001
     ];
   };
 
@@ -127,7 +127,7 @@
       Group = "users";
       WorkingDirectory = "/home/georg/source/sound-control/backend";
       Environment = [
-        "PORT=6000"
+        "PORT=4001"
       ];
     };
   };
