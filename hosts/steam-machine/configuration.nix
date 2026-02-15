@@ -205,8 +205,12 @@
     enable = true;
     # ensureDatabases = [ "mydatabase" ];
     authentication = pkgs.lib.mkOverride 10 ''
-      #type database  DBuser  auth-method
-      local all       all     trust
+      #type database  DBuser                  auth-method
+      local all       all                     trust
+
+      # Over IP
+      host  all       all     all             trust
+      host  all       all     ::1/128         trust
     '';
   };
 
