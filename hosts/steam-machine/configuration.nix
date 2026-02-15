@@ -201,6 +201,15 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  services.postgresql = {
+    enable = true;
+    # ensureDatabases = [ "mydatabase" ];
+    authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  auth-method
+      local all       all     trust
+    '';
+  };
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
