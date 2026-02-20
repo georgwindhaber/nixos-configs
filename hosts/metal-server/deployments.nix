@@ -11,6 +11,7 @@
       9000
       # hypa.digital
       4001
+      4002
     ];
   };
 
@@ -19,7 +20,11 @@
     polkit.addRule(function(action, subject) {
       if (
         action.id == "org.freedesktop.systemd1.manage-units" &&
-        (action.lookup("unit") == "repinn-backend.service" || action.lookup("unit") == "repinn-backend-dev.service" || action.lookup("unit") == "sound-control-backend.service") &&
+        (action.lookup("unit") == "repinn-backend.service" 
+        || action.lookup("unit") == "repinn-backend-dev.service" 
+        || action.lookup("unit") == "sound-control-backend.service"
+        || action.lookup("unit") == "n2t2-backend.service"
+        ) &&
         subject.user == "georg"
       ) {
         return polkit.Result.YES;
@@ -128,6 +133,28 @@
       WorkingDirectory = "/home/georg/source/sound-control/backend";
       Environment = [
         "PORT=4001"
+      ];
+    };
+  };
+
+  systemd.services.n2t2-backend = {
+    enable = true;
+    description = "n2t2 (no nonsense time tracking) by hypa.digital backend";
+    unitConfig = {
+    };
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/n2t2/backend/dist/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
+      StandardOutput = "journal";
+      StandardError = "journal";
+      User = "georg";
+      Group = "users";
+      WorkingDirectory = "/home/georg/source/n2t2/backend";
+      Environment = [
+        "PORT=4002"
       ];
     };
   };
