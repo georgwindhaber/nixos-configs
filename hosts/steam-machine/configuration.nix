@@ -177,6 +177,8 @@
     dbeaver-bin # database gui
     nodejs_24
     nodePackages."@nestjs/cli"
+    ollama-rocm
+    openssl
 
     # NixOS
     nixfmt
