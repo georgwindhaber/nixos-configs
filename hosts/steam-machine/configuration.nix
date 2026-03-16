@@ -179,6 +179,7 @@
     nodePackages."@nestjs/cli"
     ollama-rocm
     openssl
+    slack
 
     # NixOS
     nixfmt
