@@ -2,7 +2,7 @@
 
 let
   mySshKeys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKE+wrNc8q+A/do5Og6xpK+Q8UR3DpWcXg0Iq7hlSI1j" # Steam machine
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGGU1VFbKsyhCp1Cvi5Ih3XZfUEsN5RrBLBDfhP9cRR2" # Steam machine Fedora
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAW5acAzbohO9YMXDm7SpvUO86f9hMrY9UBXs09mQ+V9" # Metal server
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFmIwQY6UupeWSg4WpYLilLxRI/FQ5OwqqIjGxUrrdjh" # Macbook Air
   ];
