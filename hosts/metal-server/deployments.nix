@@ -8,6 +8,7 @@
       3001
       3002
       3005
+      3006
       9000
       # hypa.digital
       4001
@@ -24,6 +25,7 @@
         || action.lookup("unit") == "repinn-backend-dev.service" 
         || action.lookup("unit") == "sound-control-backend.service"
         || action.lookup("unit") == "n2t2-backend.service"
+        || action.lookup("unit") == "sss-backend.service"
         ) &&
         subject.user == "georg"
       ) {
@@ -111,6 +113,27 @@
       WorkingDirectory = "/home/georg/source/flo-birthday-gadse/backend";
       Environment = [
         "PORT=3005"
+      ];
+    };
+  };
+
+  systemd.services.sss-backend = {
+    enable = true;
+    description = "The 'Schoubl Sunday Shenanigans' backend";
+    unitConfig = {};
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.nodejs_24}/bin/node /home/georg/source/sss/backend/dist/index.js";
+      Type = "simple";
+      Restart = "always";
+      RestartSec = "10";
+      StandardOutput = "journal";
+      StandardError = "journal";
+      User = "georg";
+      Group = "users";
+      WorkingDirectory = "/home/georg/source/sss/backend";
+      Environment = [
+        "PORT=3006"
       ];
     };
   };
